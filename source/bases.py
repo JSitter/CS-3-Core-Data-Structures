@@ -39,15 +39,25 @@ def decode(digits, base):
                 multiplier = int(ord(digits[-1 - x].lower()) - 87)
             else:
                 multiplier = int(digits[-1 - x])
-            print("digit", digits[-1 - x])
-            print("power", inc)
-            print("cur", )
+
+            accumulator += inc * multiplier
+
+    # TODO: Decode digits from any base (2 up to 36)
+    else:
+        accumulator = 0
+        stop = len(digits)
+        multiplier = 0
+        for x in range(0,stop):
+            inc = base ** x
+
+            if digits[-1 - x].isalpha():
+                multiplier = int(ord(digits[-1 - x].lower()) - 87)
+            else:
+                multiplier = int(digits[-1 - x])
+
             accumulator += inc * multiplier
             
 
-
-    # TODO: Decode digits from any base (2 up to 36)
-    # ...
     return accumulator
 
 def encode(number, base):
