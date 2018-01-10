@@ -77,16 +77,17 @@ def encode(number, base):
         return 0
 
     # TODO: Encode number in binary (base 2)
+    
+    #Get exponent to start
+    exponent = str( math.log(number, base)).split('.')
+    accumulator = 0
+    
+    print("Exponent", exponent[0])
+
+    #loop until accumulator equals number
+    remainder = number
+
     if base ==2:
-        #Get exponent to start
-        exponent = str( math.log(number, base)).split('.')
-        accumulator = 0
-        
-        print("Exponent", exponent[0])
-
-        #loop until accumulator equals number
-        remainder = number
-
         for x in range(int(exponent[0]), 0, -1):
             cur_power = base ** x
             if accumulator + cur_power <= number:
@@ -95,10 +96,10 @@ def encode(number, base):
             else:
                 encoded += "0"
 
-    
-
     # TODO: Encode number in hexadecimal (base 16)
-    # ...
+    
+        
+    
     # TODO: Encode number in any base (2 up to 36)
 
     return encoded

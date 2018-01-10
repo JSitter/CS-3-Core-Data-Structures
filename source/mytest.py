@@ -2,4 +2,4 @@
 
 from bases import encode as ec
 
-print(ec(53, 2))
+print(ec(54, 2))
