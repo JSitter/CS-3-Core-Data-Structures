@@ -15,29 +15,37 @@ def decode(digits, base):
     digits: str -- string representation of number (in given base)
     base: int -- base of given number
     return: int -- integer representation of number (in base 10)"""
+
     # Handle up to base 36 [0-9a-z]
     assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
     # TODO: Decode digits from binary (base 2)
 
     if base == 2:
         accumulator = 0
-        
         stop = len(digits)
-        print("stop", stop)
         for x in range(0,stop):
-            print("x", x)
-            print("digit", int(digits[-1 - x]))
             inc = 2 ** x
-            
             accumulator += inc * int(digits[-1 - x])
-            
-            print("Accum:", accumulator)
-        
-
-
 
     # TODO: Decode digits from hexadecimal (base 16)
-    # ...
+    if base == 16:
+
+        accumulator = 0
+        stop = len(digits)
+        multiplier = 0
+        for x in range(0, stop):
+            inc = 16 ** x
+            if digits[-1 - x].isalpha():
+                multiplier = int(ord(digits[-1 - x].lower()) - 87)
+            else:
+                multiplier = int(digits[-1 - x])
+            print("digit", digits[-1 - x])
+            print("power", inc)
+            print("cur", )
+            accumulator += inc * multiplier
+            
+
+
     # TODO: Decode digits from any base (2 up to 36)
     # ...
     return accumulator

@@ -2,4 +2,4 @@
 
 from bases import decode as dc
 
-print(dc("11", 2))
+print(dc("1aF34", 16))
