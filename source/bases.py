@@ -1,6 +1,8 @@
 #!python
 
 import string
+import math
+
 # Hint: Use these string constants to encode/decode hexadecimal digits and more
 # string.digits is '0123456789'
 # string.hexdigits is '0123456789abcdefABCDEF'
@@ -69,12 +71,38 @@ def encode(number, base):
     assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
     # Handle unsigned numbers only for now
     assert number >= 0, 'number is negative: {}'.format(number)
+    encoded = ""
+
+    if number == 0:
+        return 0
+
     # TODO: Encode number in binary (base 2)
-    # ...
+    if base ==2:
+        #Get exponent to start
+        exponent = str( math.log(number, base)).split('.')
+        accumulator = 0
+        
+        print("Exponent", exponent[0])
+
+        #loop until accumulator equals number
+        remainder = number
+
+        for x in range(int(exponent[0]), 0, -1):
+            cur_power = base ** x
+            if accumulator + cur_power <= number:
+                encoded += "1"
+                accumulator += cur_power
+            else:
+                encoded += "0"
+
+    
+
     # TODO: Encode number in hexadecimal (base 16)
     # ...
     # TODO: Encode number in any base (2 up to 36)
-    # ...
+
+    return encoded
+    
 
 
 def convert(digits, base1, base2):

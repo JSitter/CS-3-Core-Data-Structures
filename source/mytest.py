@@ -1,5 +1,5 @@
 #!/usr/bin/python3
 
-from bases import decode as dc
+from bases import encode as ec
 
-print(dc("ab", 12))
+print(ec(53, 2))
