@@ -18,12 +18,29 @@ def decode(digits, base):
     # Handle up to base 36 [0-9a-z]
     assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
     # TODO: Decode digits from binary (base 2)
-    # ...
+
+    if base == 2:
+        accumulator = 0
+        
+        stop = len(digits)
+        print("stop", stop)
+        for x in range(0,stop):
+            print("x", x)
+            print("digit", int(digits[-1 - x]))
+            inc = 2 ** x
+            
+            accumulator += inc * int(digits[-1 - x])
+            
+            print("Accum:", accumulator)
+        
+
+
+
     # TODO: Decode digits from hexadecimal (base 16)
     # ...
     # TODO: Decode digits from any base (2 up to 36)
     # ...
-
+    return accumulator
 
 def encode(number, base):
     """Encode given number in base 10 to digits in given base.
@@ -52,7 +69,7 @@ def convert(digits, base1, base2):
     assert 2 <= base1 <= 36, 'base1 is out of range: {}'.format(base1)
     assert 2 <= base2 <= 36, 'base2 is out of range: {}'.format(base2)
     # TODO: Convert digits from base 2 to base 16 (and vice versa)
-    # ...
+    # 
     # TODO: Convert digits from base 2 to base 10 (and vice versa)
     # ...
     # TODO: Convert digits from base 10 to base 16 (and vice versa)
