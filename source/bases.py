@@ -97,9 +97,9 @@ def encode(number, base):
                 encoded += "0"
 
     # TODO: Encode number in hexadecimal (base 16)
-    
-        
-    
+    if number == 16:
+       for x in range(int(exponent[0])): 
+           pass
     # TODO: Encode number in any base (2 up to 36)
 
     return encoded
