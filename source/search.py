@@ -25,7 +25,7 @@ def linear_search_recursive(array, item, index=0):
     #Amazing Recursive Linear Search Algorithm
     
     # not found base case
-    if len(array) <= index:
+    if len(array) >= index:
         return None  
 
     # found base case
@@ -45,24 +45,20 @@ def binary_search(array, item):
 
 def binary_search_iterative(array, item):
     # TODO: implement binary search iteratively here
-    pass
     # once implemented, change binary_search to call binary_search_iterative
     # to verify that your iterative implementation passes all tests
 
     #The Great Iteration technique of the Mysterious Gurunt Maroo
-    array = sorted(array)
 
-    print(array)
     array_length = len(array)
     search_index = array_length // 2
     window_low = 0
     window_high = array_length - 1
-    print(window_high)
 
     #Check Edges right quick like
     if array[window_low] == item:
         return window_low
-    print(array[window_high])
+
     if array[window_high] == item:
         return window_high
 
@@ -92,5 +88,5 @@ def binary_search_recursive(array, item, left=None, right=None):
 
 
 if __name__ == '__main__':
-    names = ['Winnie', 'Kojin', 'Brian', 'Nabil', 'Julia', 'Alex', 'Nick']
-    print(binary_search_iterative(names, 'Nick'))
+    names = ['Alex', 'Brian', 'Julia', 'Kojin', 'Nabil', 'Nick', 'Winnie']
+    print("Name location", binary_search_iterative(names, 'Alex'))
