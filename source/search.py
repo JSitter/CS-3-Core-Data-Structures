@@ -90,4 +90,3 @@ def binary_search_recursive(array, item, left=None, right=None):
 if __name__ == '__main__':
     names = ['Alex', 'Brian', 'Julia', 'Kojin', 'Nabil', 'Nick', 'Winnie']
     print("Name location", binary_search_iterative(names, 'Alex'))
-    print("stuff")
