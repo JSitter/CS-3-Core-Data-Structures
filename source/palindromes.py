@@ -19,9 +19,23 @@ def is_palindrome(text):
 
 def is_palindrome_iterative(text):
     # TODO: implement the is_palindrome function iteratively here
-    pass
     # once implemented, change is_palindrome to call is_palindrome_iterative
     # to verify that your iterative implementation passes all tests
+    
+    # Just do it Python
+    # text = sanitizeText(text)
+    # if text[::-1] == text:
+    #     return True
+    # else:
+    #     return False
+
+    # Specifically iterative python
+    clean_text = sanitizeText(text)
+    for x in range(0, len(clean_text) - 1):
+        if clean_text[x] != clean_text[-1 - x]:
+            return False
+    return True
+
 
 
 def is_palindrome_recursive(text, left=None, right=None):
@@ -30,6 +44,12 @@ def is_palindrome_recursive(text, left=None, right=None):
     # once implemented, change is_palindrome to call is_palindrome_recursive
     # to verify that your iterative implementation passes all tests
 
+def sanitizeText(sourceText):
+    '''
+        Santize words
+    '''
+    acceptedChars = set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+    return ''.join(filter(acceptedChars.__contains__, sourceText)).lower()
 
 def main():
     import sys
@@ -46,4 +66,6 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    #main()
+    if is_palindrome("hIck,kcih"):        
+        print("True Dat")
