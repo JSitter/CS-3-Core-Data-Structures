@@ -68,4 +68,4 @@ def main():
 if __name__ == '__main__':
     #main()
     if is_palindrome("hIck,kcih"):        
-        print("True Dat")
+        print("Checkly Weckle")
