@@ -8,10 +8,13 @@ def contains(text, pattern):
     pattern_len = len(pattern)
     text_len = len(text)
 
+    if pattern_len == 0:
+        return True
+
     if text_len < pattern_len:
         return False
 
-    for corpus_index in range(0, pattern_len):
+    for corpus_index in range(0, text_len):
         matching_index = corpus_index
         pattern_index = 0
         text_char = ""
@@ -20,14 +23,14 @@ def contains(text, pattern):
         while text_char == pattern_char:
             if text_len - matching_index <= 0:
                 return False
-            
+
             text_char = text[matching_index]
-            pattern_char = pattern[0]
+            pattern_char = pattern[pattern_index]
 
             matching_index += 1
             pattern_index += 1
 
-            if len(pattern_index) >= pattern_len:
+            if pattern_index >= pattern_len:
                 return True
         
 
@@ -78,3 +81,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    contains('abc', 'z')
