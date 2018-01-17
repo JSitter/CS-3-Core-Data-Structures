@@ -13,8 +13,8 @@ def is_palindrome(text):
     # implement is_palindrome_iterative and is_palindrome_recursive below, then
     # change this to call your implementation to verify it passes all tests
     assert isinstance(text, str), 'input is not a string: {}'.format(text)
-    return is_palindrome_iterative(text)
-    # return is_palindrome_recursive(text)
+    # return is_palindrome_iterative(text)
+    return is_palindrome_recursive(text)
 
 
 def is_palindrome_iterative(text):
@@ -40,9 +40,42 @@ def is_palindrome_iterative(text):
 
 def is_palindrome_recursive(text, left=None, right=None):
     # TODO: implement the is_palindrome function recursively here
-    pass
     # once implemented, change is_palindrome to call is_palindrome_recursive
     # to verify that your iterative implementation passes all tests
+    text = sanitizeText(text)
+
+    # if left == None and right == None:
+    #     left = text[0]
+    #     right = text[-1]
+    #     new_text = text[1:-1]
+    #     print("new stripped text", new_text)
+    #     return is_palindrome_recursive(new_text, left, right)
+
+    # else:
+    #     if left == right:
+    #         if len(text) < 2:
+    #             #Base Case Found
+    #             return True
+            
+    
+    #         else:
+
+    print("Checking for Palendrome:", text)
+    text_len = len(text)
+    if left == right:
+
+        if left == None and text_len == 1:
+            return True
+
+        #if left and right are same then middle doesn't matter
+        if text_len <3:
+            return True
+        else:
+            new_text = text[1:-1]
+            return is_palindrome_recursive(new_text, text[0], text[-1])
+    else:
+        return False
+
 
 def sanitizeText(sourceText):
     '''
@@ -67,5 +100,5 @@ def main():
 
 if __name__ == '__main__':
     #main()
-    if is_palindrome("hIck,kcih"):        
+    if is_palindrome("LOL"):        
         print("Checkly Weckle")
