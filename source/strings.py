@@ -6,8 +6,9 @@ def contains(text, pattern):
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # TODO: Implement contains here (iteratively and/or recursively)
     pattern_len = len(pattern)
+    text_len = len(text)
 
-    if len(text) < pattern_len:
+    if text_len < pattern_len:
         return False
 
     for corpus_index in range(0, pattern_len):
@@ -17,6 +18,8 @@ def contains(text, pattern):
         pattern_char = ""
 
         while text_char == pattern_char:
+            if text_len - matching_index <= 0:
+                return False
             
             text_char = text[matching_index]
             pattern_char = pattern[0]
