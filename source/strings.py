@@ -83,6 +83,42 @@ def find_all_indexes(text, pattern):
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # TODO: Implement find_all_indexes here (iteratively and/or recursively)
 
+    pattern_len = len(pattern)
+    text_len = len(text)
+    found_indexes = list()
+
+    if pattern_len == 0:
+        for x in range(0, text_len):
+            found_indexes.append(x)
+        return found_indexes
+    
+    if pattern_len > text_len:
+        return found_indexes
+
+    for corpus_index in range(0, text_len):
+        matching_index = corpus_index
+        pattern_index = 0
+        text_char = ""
+        pattern_char = ""
+
+        while text_char == pattern_char:
+            if text_len - matching_index <= 0:
+                return found_indexes
+
+            text_char = text[matching_index]
+            pattern_char = pattern[pattern_index]
+
+            
+            if text_char == pattern_char:
+                matching_index += 1
+                pattern_index += 1
+
+            if pattern_index >= pattern_len:
+                found_indexes.append(corpus_index)
+                pattern_index = 0
+                break
+    
+    return found_indexes
 
 def test_string_algorithms(text, pattern):
     found = contains(text, pattern)
@@ -115,3 +151,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    find_all_indexes('abcabcabc', 'abc')
