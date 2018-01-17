@@ -27,12 +27,15 @@ def contains(text, pattern):
             text_char = text[matching_index]
             pattern_char = pattern[pattern_index]
 
-            matching_index += 1
-            pattern_index += 1
+            
+            if text_char == pattern_char:
+                matching_index += 1
+                pattern_index += 1
 
             if pattern_index >= pattern_len:
                 return True
-        
+    
+    return False
 
 def find_index(text, pattern):
     """Return the starting index of the first occurrence of pattern in text,
