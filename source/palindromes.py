@@ -44,31 +44,14 @@ def is_palindrome_recursive(text, left=None, right=None):
     # to verify that your iterative implementation passes all tests
     text = sanitizeText(text)
 
-    # if left == None and right == None:
-    #     left = text[0]
-    #     right = text[-1]
-    #     new_text = text[1:-1]
-    #     print("new stripped text", new_text)
-    #     return is_palindrome_recursive(new_text, left, right)
-
-    # else:
-    #     if left == right:
-    #         if len(text) < 2:
-    #             #Base Case Found
-    #             return True
-            
-    
-    #         else:
-
-    print("Checking for Palendrome:", text)
     text_len = len(text)
     if left == right:
 
-        if left == None and text_len == 1:
+        if left == None and text_len <= 1:
             return True
-
+ 
         #if left and right are same then middle doesn't matter
-        if text_len <3:
+        if text_len <2 and left is not None:
             return True
         else:
             new_text = text[1:-1]
@@ -100,5 +83,5 @@ def main():
 
 if __name__ == '__main__':
     #main()
-    if is_palindrome("LOL"):        
+    if is_palindrome("ABCZBA"):        
         print("Checkly Weckle")
