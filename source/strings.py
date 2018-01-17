@@ -5,7 +5,28 @@ def contains(text, pattern):
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # TODO: Implement contains here (iteratively and/or recursively)
+    pattern_len = len(pattern)
 
+    if len(text) < pattern_len:
+        return False
+
+    for corpus_index in range(0, pattern_len):
+        matching_index = corpus_index
+        pattern_index = 0
+        text_char = ""
+        pattern_char = ""
+
+        while text_char == pattern_char:
+            
+            text_char = text[matching_index]
+            pattern_char = pattern[0]
+
+            matching_index += 1
+            pattern_index += 1
+
+            if len(pattern_index) >= pattern_len:
+                return True
+        
 
 def find_index(text, pattern):
     """Return the starting index of the first occurrence of pattern in text,
