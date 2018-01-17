@@ -2,6 +2,7 @@
 
 def contains(text, pattern):
     """Return a boolean indicating whether pattern occurs in text."""
+    #O(n) runtime where n is the number of characters in text string
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # TODO: Implement contains here (iteratively and/or recursively)
@@ -40,6 +41,7 @@ def contains(text, pattern):
 def find_index(text, pattern):
     """Return the starting index of the first occurrence of pattern in text,
     or None if not found."""
+    #O(n) runtime where n is the length of the text string
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # TODO: Implement find_index here (iteratively and/or recursively)
@@ -79,6 +81,7 @@ def find_index(text, pattern):
 def find_all_indexes(text, pattern):
     """Return a list of starting indexes of all occurrences of pattern in text,
     or an empty list if not found."""
+    # O(n) for the length of the string carried within the tewxt veriable
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # TODO: Implement find_all_indexes here (iteratively and/or recursively)
