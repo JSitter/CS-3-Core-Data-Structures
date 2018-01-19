@@ -2,10 +2,14 @@
 from recursion import factorial
 
 def combination(n, k):
-    top = factorial(n)
-    bottom = factorial( n - k ) * factorial(k)
+    #Naive Solution
+    numerator = factorial(n)
+    denominator = factorial( n - k ) * factorial(k)
 
-    return top / bottom
+    return numerator / denominator
+
+def permutation_generator():
+    ''' return all permutations of given list in list of lists '''
 
 if __name__ == "__main__":
     print(combination(52, 5))

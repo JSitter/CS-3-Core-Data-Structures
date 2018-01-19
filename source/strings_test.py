@@ -63,7 +63,7 @@ class StringsTest(unittest.TestCase):
         # TODO: Write more positive test cases with assert equal int statements
         assert find_index('farmvillefarmville', "farm") == 0
         assert find_index("tumtun", "un") == 4
-        assert find_index("lllllllllllll", "l") == 0
+        assert find_index("lllllllllllll", "ll") == 0
 
     def test_find_index_with_non_matching_patterns(self):
         # Negative test cases (counterexamples) with non-matching patterns
