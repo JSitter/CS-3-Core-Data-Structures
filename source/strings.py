@@ -2,7 +2,7 @@
 
 def contains(text, pattern):
     """Return a boolean indicating whether pattern occurs in text."""
-    #O(n) runtime where n is the number of characters in text string
+    #O(p(n-p)) runtime where n is the number of characters in text string
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # TODO: Implement contains here (iteratively and/or recursively)

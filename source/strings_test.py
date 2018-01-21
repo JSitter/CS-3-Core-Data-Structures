@@ -21,6 +21,7 @@ class StringsTest(unittest.TestCase):
         assert contains("abcde  abcde", "  ") is True
         assert contains("return", "return") is True
         assert contains("Rabbit2", "2") is True
+        assert contains('aaaaab', 'aaab') is True
         # TODO: Write more positive test cases with assert is True statements
         # ...
 
@@ -64,6 +65,8 @@ class StringsTest(unittest.TestCase):
         assert find_index('farmvillefarmville', "farm") == 0
         assert find_index("tumtun", "un") == 4
         assert find_index("lllllllllllll", "ll") == 0
+        assert find_index('aaaaab', 'aaab') == 2
+        
 
     def test_find_index_with_non_matching_patterns(self):
         # Negative test cases (counterexamples) with non-matching patterns
