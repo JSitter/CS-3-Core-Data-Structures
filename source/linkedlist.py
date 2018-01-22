@@ -96,8 +96,6 @@ class LinkedList(object):
         if not (0 <= index < self.size):
             raise ValueError('List index out of range: {}'.format(index))
 
-        print("Size of the salami: ", self.size)
-        print("Size of the salami's index", index)
         cur_position = 0
         cur_item = self.head
         while cur_position < index:
@@ -126,7 +124,6 @@ class LinkedList(object):
 
         else:
             previous_node = self.get_node_at_index(index)
-            print("la di da data: ", previous_node.data)
             new_node = Node(item)
             next_node = previous_node.next
             previous_node.next = new_node
@@ -207,7 +204,7 @@ class LinkedList(object):
         
         if cur_node.data == old_item:
             cur_node.data = new_item
-            print(self.head)
+
 
 
         else:
