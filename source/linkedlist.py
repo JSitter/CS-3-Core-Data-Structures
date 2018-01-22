@@ -79,16 +79,31 @@ class LinkedList(object):
         Best case running time: O(1) under what conditions? [When item to be found exists at front of list]
         Worst case running time: O(n) under what conditions? [When item is at end of list]"""
         # Check if the given index is out of range and if so raise an error
-        print("Size of the salami: ", self.size)
-        print("Size of the salami's index", index)
-        if not (0 <= index <= self.size):
+
+        if not (0 <= index < self.size):
+            raise ValueError('List index out of range: {}'.format(index))
+        node = self.get_node_at_index(index)
+        return node.data
+
+
+    def get_node_at_index(self, index):
+        """Return the item at the given index in this linked list, or
+        raise ValueError if the given index is out of range of the list size.
+        Best case running time: O(1) under what conditions? [When item to be found exists at front of list]
+        Worst case running time: O(n) under what conditions? [When item is at end of list]"""
+        # Check if the given index is out of range and if so raise an error
+
+        if not (0 <= index < self.size):
             raise ValueError('List index out of range: {}'.format(index))
 
+        print("Size of the salami: ", self.size)
+        print("Size of the salami's index", index)
         cur_position = 0
         cur_item = self.head
         while cur_position < index:
             cur_item = cur_item.next
             cur_position += 1
+
         return cur_item
 
         
@@ -103,12 +118,26 @@ class LinkedList(object):
         if not (0 <= index <= self.size):
             raise ValueError('List index out of range: {}'.format(index))
         # TODO: Find the node before the given index and insert item after it
-        print("size: ", self.size)
-        previous_node = self.get_at_index(index)
-        next_node = previous_node.next
-        previous_node.next = item
-        self.size += 1
-        item.next = next_node        
+
+        if self.size == index:
+            self.append(item)                  
+        elif index is 0:
+            self.prepend(item)
+
+        else:
+            previous_node = self.get_node_at_index(index)
+            print("la di da data: ", previous_node.data)
+            new_node = Node(item)
+            next_node = previous_node.next
+            previous_node.next = new_node
+            self.size += 1
+            new_node.next = next_node 
+
+            #update head and tail        
+            if index == 0:
+                self.head = new_node
+            if index == (self.size):
+                self.tail = new_node
 
     def append(self, item):
         """Insert the given item at the tail of this linked list.
@@ -125,7 +154,7 @@ class LinkedList(object):
         # Update tail to new node regardless
         self.tail = new_node
         self.size += 1
-        print(self.size)
+
 
     def prepend(self, item):
         """Insert the given item at the head of this linked list.
@@ -141,6 +170,7 @@ class LinkedList(object):
             new_node.next = self.head
         # Update head to new node regardless
         self.head = new_node
+        self.size += 1
 
     def find(self, quality):
         """Return an item from this linked list satisfying the given quality.
@@ -259,8 +289,12 @@ def test_linked_list():
     print('length: {}'.format(ll.length()))
 
 
-    ll.insert_at_index(0, 'B')  # append('B')
+    ll = LinkedList(['A', 'B', 'C'])
+    print(ll)
+    print("failing test case: ", ll.get_at_index(0)) # == 'A'  # head item
+    assert ll.get_at_index(0) == 'A'  # head item
 
+    ll.insert_at_index(2, 'K')  # insert 'C' between 'B' and 'D'
 
 if __name__ == '__main__':
     test_linked_list()
