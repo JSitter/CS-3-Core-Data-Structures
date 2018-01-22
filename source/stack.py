@@ -106,40 +106,47 @@ class ArrayStack(object):
     def is_empty(self):
         """Return True if this stack is empty, or False otherwise."""
         # TODO: Check if empty
+        if len(self.list) == 0:
+            return True
+        else:
+            return False
 
     def length(self):
         """Return the number of items in this stack."""
         # TODO: Count number of items
-        pass
+        return len(self.list)
 
     def push(self, item):
         """Insert the given item on the top of this stack.
         Running time: O  Why TODO"""
+        self.list.append(item)
 
-        pass
     def peek(self):
         """Return the item on the top of this stack without removing it,
         or None if this stack is empty."""
         # TODO: Return top item, if any
+        if len(self.list) > 0:
+            return self.list[-1]
+        else:
+            return None
 
     def pop(self):
         """Remove and return the item on the top of this stack,
         or raise ValueError if this stack is empty.
         Running time: O(n) – Why [Must iterate]"""
         # TODO: Remove and return top item, if any
+        if len(self.list) == 0:
+            raise ValueError("Stack is empty")
+        item = self.list[-1]
+        if len(self.list) > 1:
+            self.list = self.list[0:-1]
+        else:
+            self.list = list()
+        
+        return item
 
 
 # Implement LinkedStack and ArrayStack above, then change the assignment below
 # to use each of your Stack implementations to verify they each pass all tests
-Stack = LinkedStack
-# Stack = ArrayStack
-
-if __name__ == "__main__":
-    s = Stack(['A', 'B', 'C'])
-    assert s.pop() == 'C'
-    assert s.length() == 2
-    assert s.pop() == 'B'
-    assert s.length() == 1
-    assert s.pop() == 'A'
-    assert s.length() == 0
-    assert s.is_empty() is True
+# Stack = LinkedStack
+Stack = ArrayStack
