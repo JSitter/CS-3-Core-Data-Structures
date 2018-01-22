@@ -199,11 +199,17 @@ class LinkedList(object):
         # data with new_item, without creating a new node object
         cur_node = self.head
 
+        index = 0
+
         while cur_node.data is not old_item and (cur_node.next is not None):
             cur_node = cur_node.next
+            index += 1
         
         if cur_node.data == old_item:
-            cur_node.data == new_item
+            cur_node.data = new_item
+            print(self.head)
+
+
         else:
             raise ValueError('Item not found: {}'.format(new_item))
 
