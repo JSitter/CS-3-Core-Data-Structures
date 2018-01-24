@@ -33,7 +33,10 @@ class HashTable(object):
 
     def keys(self):
         """Return a list of all keys in this hash table.
-        Best and worst case running time: ??? under what conditions? [TODO]"""
+        Best and worst case running time: ??? under what conditions? 
+        O(n) where n is the number of items in the table. 
+        Occurs under all conditions.
+        """
         # Collect all keys in each of the buckets
         all_keys = []
         for bucket in self.buckets:
@@ -114,13 +117,14 @@ class HashTable(object):
             # In this case, the given key's value is being updated
             # Remove the old key-value entry from the bucket first
             bucket.delete(entry)
+            self.size -= 1
         # Insert the new key-value entry into the bucket in either case
         bucket.append((key, value))
         self.size += 1
         # TODO: Check if the load factor exceeds a threshold such as 0.75
-        # ...
-        # TODO: If so, automatically resize to reduce the load factor
-        # ...
+        if self.load_factor() > 0.75:
+            self._resize()
+
 
     def delete(self, key):
         """Delete the given key and its associated value, or raise KeyError.
@@ -142,21 +146,29 @@ class HashTable(object):
         """Resize this hash table's buckets and rehash all key-value entries.
         Should be called automatically when load factor exceeds a threshold
         such as 0.75 after an insertion (when set is called with a new key).
-        Best and worst case running time: ??? under what conditions? [TODO]
-        Best and worst case space usage: ??? what uses this memory? [TODO]"""
+        Best and worst case running time: O(1) If hashmap is empty and O(2n) all
+        other times due to copying items to variable and then iterating over items
+        again to add to new hashmap
+        Best and worst case space usage: O(2n) what uses this memory? [TODO]"""
         # If unspecified, choose new size dynamically based on current size
         if new_size is None:
             new_size = len(self.buckets) * 2  # Double size
         # Option to reduce size if buckets are sparsely filled (low load factor)
         elif new_size is 0:
             new_size = len(self.buckets) / 2  # Half size
+
         # TODO: Get a list to temporarily hold all current key-value entries
-        # ...
+        holding_list = self.items()
+
         # TODO: Create a new list of new_size total empty linked list buckets
-        # ...
+        self.__init__(new_size)
+
         # TODO: Insert each key-value entry into the new list of buckets,
         # which will rehash them into a new bucket index based on the new size
-        # ...
+        
+        for item in holding_list:
+            self.set(item[0], item[1])
+        
 
 
 def test_hash_table():
@@ -189,21 +201,21 @@ def test_hash_table():
     print('contains(X): ' + str(ht.contains('X')))
     print('contains(Z): ' + str(ht.contains('Z')))
 
-    print('Deleting entries:')
-    ht.delete('I')
-    print('delete(I): ' + str(ht))
-    ht.delete('V')
-    print('delete(V): ' + str(ht))
-    ht.delete('X')
-    print('delete(X): ' + str(ht))
-    ht.delete('L')
-    print('delete(L): ' + str(ht))
+    # print('Deleting entries:')
+    # ht.delete('I')
+    # print('delete(I): ' + str(ht))
+    # ht.delete('V')
+    # print('delete(V): ' + str(ht))
+    # ht.delete('X')
+    # print('delete(X): ' + str(ht))
+    # ht.delete('L')
+    # print('delete(L): ' + str(ht))
     print('contains(X): ' + str(ht.contains('X')))
     print('size: ' + str(ht.size))
     print('length: ' + str(ht.length()))
     print('buckets: ' + str(len(ht.buckets)))
     print('load_factor: ' + str(ht.load_factor()))
-
+    ht._resize()
 
 if __name__ == '__main__':
     test_hash_table()
