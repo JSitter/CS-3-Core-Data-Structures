@@ -168,7 +168,7 @@ class HashTable(object):
         
         for item in holding_list:
             self.set(item[0], item[1])
-        
+    
 
 
 def test_hash_table():
