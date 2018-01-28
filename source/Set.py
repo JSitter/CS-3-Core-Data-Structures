@@ -45,7 +45,15 @@ class Set():
         Get all elements in the set
         '''
         return self.hash.keys()
-
+    
+    def get_union(self):
+        pass
+    
+    def get_intersection(self):
+        pass
+    
+    def get_difference(self):
+        pass
 
 
 
