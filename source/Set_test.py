@@ -14,4 +14,13 @@ class set_test(unittest.TestCase):
         assert(len(car_parts.get_items())) is 2
         assert("Noodler" in car_parts.get_items())
         assert("Smuffler" in car_parts.get_items())
-        
+
+    def test_set_remove(self):
+        car_parts = Set()
+        car_parts.add("Smuffler")
+        car_parts.add("Turbidity Turbine")
+        car_parts.add("Rolfoganger")
+        car_parts.remove("Rolfoganger")
+        assert(len(car_parts.get_items())) is 2
+        with self.assertRaises(KeyError):
+            car_parts.remove("Fluffykins")
