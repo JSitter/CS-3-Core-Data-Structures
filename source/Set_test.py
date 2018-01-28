@@ -14,6 +14,10 @@ class set_test(unittest.TestCase):
         assert(len(car_parts.get_items())) is 2
         assert("Noodler" in car_parts.get_items())
         assert("Smuffler" in car_parts.get_items())
+        computer_parts = Set(['Ycombinator', 'North Shore', 'East Bridge'])
+        assert(len(computer_parts.get_items())) is 3
+        assert(computer_parts.contains("North Shore"))
+
 
     def test_set_remove(self):
         car_parts = Set()
@@ -24,3 +28,10 @@ class set_test(unittest.TestCase):
         assert(len(car_parts.get_items())) is 2
         with self.assertRaises(KeyError):
             car_parts.remove("Fluffykins")
+    
+    def test_set_contains(self):
+        car_parts = Set()
+        car_parts.add("Demogorgan")
+        car_parts.add("Slurmatron")
+        assert(car_parts.contains("Slurmatron"))
+        assert(not car_parts.contains("Sluggo"))

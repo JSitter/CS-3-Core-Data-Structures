@@ -9,6 +9,9 @@ class Set():
         '''
         self.size = 0
         self.hash = HashTable()
+        if elements is not None:
+            for element in elements:
+                self.add(element)
     
     def contains(self, element):
         '''
@@ -30,8 +33,6 @@ class Set():
             self.hash.set(element, True)
             return 0
 
-
-
     def remove(self, element):
         '''
         Remove item from set
@@ -44,6 +45,8 @@ class Set():
         Get all elements in the set
         '''
         return self.hash.keys()
+
+
 
 
 if __name__ == "__main__":
