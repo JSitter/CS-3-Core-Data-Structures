@@ -16,7 +16,10 @@ class set_test(unittest.TestCase):
         assert("Smuffler" in car_parts.get_items())
         computer_parts = Set(['Ycombinator', 'North Shore', 'East Bridge'])
         assert(len(computer_parts.get_items())) is 3
+        assert(computer_parts.size) is 3
         assert(computer_parts.contains("North Shore"))
+        car_parts.add(['one'])
+        assert(car_parts.size) is 3
 
 
     def test_set_remove(self):
@@ -35,3 +38,12 @@ class set_test(unittest.TestCase):
         car_parts.add("Slurmatron")
         assert(car_parts.contains("Slurmatron"))
         assert(not car_parts.contains("Sluggo"))
+
+if __name__ == "__main__":
+
+    elements = ['one']
+
+    if(isinstance(elements, type([]))):
+        print("tis list")
+    else:
+        print("nope")

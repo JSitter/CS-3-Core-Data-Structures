@@ -23,14 +23,18 @@ class Set():
         else:
             return False
     
-    def add(self, element):
+    def add(self, elements):
         '''
         Add item to set
+        O(l) where l is the length of the list
         '''
-        if self.hash.contains(element):
+
+        if isinstance(elements, type([])):
+            print("I am a list:", elements )
+        elif self.hash.contains(elements):
             return 0
         else:
-            self.hash.set(element, True)
+            self.hash.set(elements, True)
             return 0
 
     def remove(self, element):
@@ -46,13 +50,22 @@ class Set():
         '''
         return self.hash.keys()
     
-    def get_union(self):
-        pass
+    def get_union(self, set_a, set_b):
+        '''
+        Return a set of of a and b
+        '''
+        
     
     def get_intersection(self):
+        ''''
+        Return a set of the intersection of a and b
+        '''
         pass
     
     def get_difference(self):
+        '''
+        Return a set of A - B
+        '''
         pass
 
 
