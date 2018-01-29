@@ -39,6 +39,14 @@ class set_test(unittest.TestCase):
         assert(car_parts.contains("Slurmatron"))
         assert(not car_parts.contains("Sluggo"))
 
+    def test_union(self):
+        car_parts = Set(["Smuffler", "Dongler", "Transplanifier"])
+        assert(car_parts.size) is 3
+        soup_ing = Set(["Lettuce", "Lentils", "Ginger Snaps", "Tangelos"])
+        assert(soup_ing.size) is 4
+        new_soup = car_parts.get_union(soup_ing)
+        assert(new_soup.size) is 7
+
 if __name__ == "__main__":
 
     elements = ['one']

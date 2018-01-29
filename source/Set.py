@@ -59,10 +59,15 @@ class Set():
         '''
         return self.hash.keys()
     
-    def get_union(self, set_a, set_b):
+    def get_union(self, set_b):
         '''
-        Return a set of of a and b
+        Return a set of of self's set and set b
         '''
+        print(type(self.get_items()))
+        set_a = self.get_items()
+        set_c = set_a + set_b
+
+        return set_c
         
     
     def get_intersection(self):
