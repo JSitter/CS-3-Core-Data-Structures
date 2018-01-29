@@ -30,11 +30,19 @@ class Set():
         '''
 
         if isinstance(elements, type([])):
-            print("I am a list:", elements )
+            for element in elements:
+                #add item if it doesn't aready exist
+                #O(2l) runtrime when l is th length of the linked list
+                if not self.hash.contains(element):
+                    self.hash.set(element, True)
+                    self.size += 1
+    
+
         elif self.hash.contains(elements):
             return 0
         else:
             self.hash.set(elements, True)
+            self.size += 1
             return 0
 
     def remove(self, element):
@@ -42,6 +50,7 @@ class Set():
         Remove item from set
         '''
         self.hash.delete(element)
+        self.size -= 1
         return 0
 
     def get_items(self):
