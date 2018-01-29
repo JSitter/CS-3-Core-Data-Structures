@@ -61,38 +61,68 @@ class Set():
     
     def get_union(self, set_b):
         '''
-        Return a set of of self's set and set b
+        Return a set of self's set and set b
         '''
-        print(type(self.get_items()))
-        set_a = self.get_items()
-        set_c = set_a + set_b
 
-        return set_c
+        set_c = self.get_items() + set_b.get_items()
+
+        return Set( set_c )
         
     
-    def get_intersection(self):
+    def get_intersection(self, set_b):
         ''''
         Return a set of the intersection of a and b
         '''
-        pass
+
+        b_count = set_b.size
+
+        a_count = self.size
+
+        #O(a) + O(b) = O(n)
+
+        c_list = list()
+        if b_count>a_count:
+            whole_list =  set_b.get_items()
+            part_set = self
+        else:
+            whole_list = self.get_items()
+            part_set = set_b
+        
+        for item in whole_list:
+            if part_set.contains(item):
+                c_list.append(item)
+
+        return Set(c_list)
+        
     
-    def get_difference(self):
+    def get_difference(self, set_b):
         '''
         Return a set of A - B
         '''
-        pass
+        
+        a_list = self.get_items()
+        c_list = list()
 
+        
+        for item in a_list:
+            if not set_b.contains(item):
+                c_list.append(item)
+
+        return Set(c_list)
 
 
 if __name__ == "__main__":
-    print("sets everywhere!")
-    car_parts = Set()
-    car_parts.add("Smuffler")
-    car_parts.add("Noodler")
-    car_parts.add("Flanginator")
-    car_parts.add("Smuffler")
-    print(car_parts.get_items())
-    print(car_parts.contains("Noodler"))
-    print(car_parts.contains("Roo"))
+    # print("sets everywhere!")
+    # car_parts = Set()
+    # car_parts.add("Smuffler")
+    # car_parts.add("Noodler")
+    # car_parts.add("Flanginator")
+    # car_parts.add("Smuffler")
+    # print(car_parts.get_items())
+    # print(car_parts.contains("Noodler"))
+    # print(car_parts.contains("Roo"))
 
-    
+    car_parts = Set(["Smuffler", "Dongler", "Transplanifier"])
+    soup_ing = Set(["Lettuce", "Lentils", "Ginger Snaps", "Tangelos"])
+    new_soup = car_parts.get_union(soup_ing)
+    print(new_soup)

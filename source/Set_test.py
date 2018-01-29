@@ -46,6 +46,22 @@ class set_test(unittest.TestCase):
         assert(soup_ing.size) is 4
         new_soup = car_parts.get_union(soup_ing)
         assert(new_soup.size) is 7
+    
+    def test_intersection(self):
+        fridge_parts = Set(["Philistine", "Rodedenrinator", "Turitron", "Coldness"])
+        freezer_parts = Set(["Rodedenrinator", "Turitron", "Coldness"])
+
+        boat_parts = fridge_parts.get_intersection(freezer_parts)
+        assert(boat_parts.size) is 3
+    
+    def test_difference(self):
+        fridge_parts = Set(["Philistine", "Rodedenrinator", "Turitron", "Coldness"])
+        freezer_parts = Set(["Rodedenrinator", "Turitron", "Coldness"])
+        accordian_parts = fridge_parts.get_difference(freezer_parts)
+        assert(accordian_parts.size) is 1
+        assert(accordian_parts.contains("Philistine"))
+        sump_parts = freezer_parts.get_difference(fridge_parts)
+        assert(sump_parts.size) is 0
 
 if __name__ == "__main__":
 
