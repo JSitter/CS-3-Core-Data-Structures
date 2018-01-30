@@ -81,6 +81,7 @@ class Set():
         #O(a) + O(b) = O(n)
 
         c_list = list()
+        
         if b_count>a_count:
             whole_list =  set_b.get_items()
             part_set = self
