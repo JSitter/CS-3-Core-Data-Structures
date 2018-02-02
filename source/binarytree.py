@@ -94,7 +94,7 @@ class BinarySearchTree(object):
         # Find a node with the given item, if any
         node = self._find_node(item)
         # TODO: Return the node's data if found, or None
-        return node.data if ... else None
+        return node.data if node.data == item else None
 
     def insert(self, item):
         """Insert the given item in order into this binary search tree.
@@ -130,17 +130,17 @@ class BinarySearchTree(object):
         # Loop until we descend past the closest leaf node
         while node is not None:
             # TODO: Check if the given item matches the node's data
-            if ...:
+            if node == item:
                 # Return the found node
                 return node
             # TODO: Check if the given item is less than the node's data
-            elif ...:
+            elif node.left > item:
                 # TODO: Descend to the node's left child
-                node = ...
+                node = node.left
             # TODO: Check if the given item is greater than the node's data
-            elif ...:
+            elif item > node:
                 # TODO: Descend to the node's right child
-                node = ...
+                node = node.left
         # Not found
         return None
 
