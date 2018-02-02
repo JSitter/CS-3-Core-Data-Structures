@@ -210,6 +210,11 @@ class BinarySearchTreeTest(unittest.TestCase):
         # Ensure the level-order traversal of tree items is ordered correctly
         assert tree.items_level_order() == [4, 2, 6, 1, 3, 5, 7]
 
+    def test_height(self):
+        tree = BinarySearchTree()
+        assert(tree.root.height) is None
+        tree.insert("A")
+        assert(tree.root.height) is 1
 
 if __name__ == '__main__':
     unittest.main()
