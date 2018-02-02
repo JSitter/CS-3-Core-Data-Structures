@@ -1,7 +1,5 @@
-#!python
-
-from binarytree import BinarySearchTree, BinaryTreeNode
 import unittest
+from binarytree import BinaryTreeNode, BinarySearchTree
 
 
 class BinaryTreeNodeTest(unittest.TestCase):
