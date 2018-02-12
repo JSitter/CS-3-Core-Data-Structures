@@ -81,8 +81,8 @@ def insertion_sort(items):
     order in front of items, and repeating until all items are in order.
     TODO: Running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
-    # TODO: Repeat until all items are in sorted order
-    # TODO: Take first unsorted item
+    # : Repeat until all items are in sorted order
+    # : Take first unsorted item
     # TODO: Insert it in sorted order in front of items
 
 
@@ -91,9 +91,33 @@ def merge(items1, items2):
     and return a new list containing all items in sorted order.
     TODO: Running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
-    # TODO: Repeat until one list is empty
-    # TODO: Find minimum item in both lists and append it to new list
-    # TODO: Append remaining items in non-empty list to new list
+    list1_index = 0
+    list2_index = 0
+    new_list = list()
+
+    # Repeat until one list is empty
+    while len(items1) > list1_index and len(items2) > list2_index:
+        # Find minimum item in both lists and append it to new list
+        if items1[list1_index] <= items2[list2_index]:
+            new_list.append(items1[list1_index])
+            list1_index += 1
+        else:
+            new_list.append(items2[list2_index])
+            list2_index += 1
+    # Append remaining items in non-empty list to new list
+    if list1_index < len(items1):
+        while list1_index < len(items1):
+            new_list.append(items1[list1_index])
+            list1_index += 1
+    elif list2_index < len(items2):
+        while list2_index < len(items2):
+            new_list.append(items2[list2_index])
+            list2_index += 1
+
+    return new_list
+
+
+
 
 
 def split_sort_merge(items):
@@ -145,6 +169,12 @@ def main():
     import sys
     args = sys.argv[1:]  # Ignore script file name
 
+    #Test Merge function
+    items1 = ["Bananas", "Picadilly", "Picasso"]
+    items2 = ["August", "Picadilly", "Reaming"]
+    new_list = merge(items1, items2)
+    print(new_list)
+
     if len(args) == 0:
         script = sys.argv[0]  # Get script file name
         print('Usage: {} sort num max'.format(script))
@@ -182,6 +212,7 @@ def main():
 
     # Test sort function
     test_sorting(sort_function, num_items, max_value)
+
 
 
 if __name__ == '__main__':
