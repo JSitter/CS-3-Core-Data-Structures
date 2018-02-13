@@ -81,7 +81,22 @@ def insertion_sort(items):
     order in front of items, and repeating until all items are in order.
     TODO: Running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
-    # : Repeat until all items are in sorted order
+    
+    # Repeat until all items are in sorted order
+    for unsorted_index in range(1, len(items)):
+        sort_item = items[unsorted_index]
+        search_index = unsorted_index - 1
+        insert_index = unsorted_index
+        while search_index >= 0:
+            if items[search_index] < sort_item:
+                items[insert_index] = sort_item
+            else:
+                items[insert_index] = items[search_index]
+                search_index -= 1
+        
+
+
+
     # : Take first unsorted item
     # TODO: Insert it in sorted order in front of items
 
@@ -126,9 +141,27 @@ def split_sort_merge(items):
     a list in sorted order.
     TODO: Running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
-    # TODO: Split items list into approximately equal halves
-    # TODO: Sort each half using any other sorting algorithm
-    # TODO: Merge sorted halves into one list in sorted order
+
+    list1 = list()
+    list2 = list()
+    iterator_index = 0
+
+    # Split items list into approximately equal halves
+    while iterator_index < len(items):
+        if iterator_index % 2 == 0:
+            list1.append(items[iterator_index])
+        else:
+            list2.append(items[iterator_index])
+        iterator_index += 1
+
+    # Sort each half using any other sorting algorithm
+    selection_sort(list1)
+    selection_sort(list2)
+    # Merge sorted halves into one list in sorted order
+    return merge(list1, list2)
+
+    
+    
 
 
 def merge_sort(items):

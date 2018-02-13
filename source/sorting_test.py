@@ -1,7 +1,7 @@
 #!python
 
 from sorting import (is_sorted, bubble_sort, selection_sort, insertion_sort,
-                     merge_sort, random_ints, merge)
+                     merge_sort, random_ints, merge, split_sort_merge)
 import unittest
 
 
@@ -190,11 +190,16 @@ class StringSortTest(unittest.TestCase):
 class MergeTest(unittest.TestCase):
     def test_merge(self):
         items1 = ["Bananas", "Picadilly", "Picasso"]
-        items2 = ["August", "Picadilly", "Reaming"]
+        items2 = ["August", "Picadilly", "Rearing"]
         new_list = merge(items1, items2)
         print(new_list)
-        assert new_list == ["August", "Bananas", "Picadilly", "Picadilly", "Picasso", "Reaming"]
-        
+        assert new_list == ["August", "Bananas", "Picadilly", "Picadilly", "Picasso", "Rearing"]
+
+class MergeSort(unittest.TestCase):
+    def test_merge_sort(self):
+        unsorted_list = ["Potatoes", "Transfat", "Toes", "Squealed", "Impossibru", "Bastion"]
+        sorted_list = ["Bastion", "Impossibru","Potatoes","Squealed","Toes","Transfat"] 
+        assert split_sort_merge(unsorted_list) == sorted_list 
 
 if __name__ == '__main__':
     unittest.main()
