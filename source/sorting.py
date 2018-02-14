@@ -1,5 +1,5 @@
 #!python
-
+from binarytree import BinarySearchTree as BT
 
 def is_sorted(items):
     """Return a boolean indicating whether given items are in sorted order.
@@ -83,16 +83,25 @@ def insertion_sort(items):
     TODO: Memory usage: ??? Why and under what conditions?"""
     
     # Repeat until all items are in sorted order
-    for unsorted_index in range(1, len(items)):
-        sort_item = items[unsorted_index]
-        search_index = unsorted_index - 1
-        insert_index = unsorted_index
-        while search_index >= 0:
-            if items[search_index] < sort_item:
+    for unsort_index in range(1, len(items)):
+        sort_item = items[unsort_index]
+        compare_index = unsort_index - 1
+        item_sorted = False
+        insert_index = unsort_index
+        while not item_sorted:
+            if items[compare_index] < sort_item:
                 items[insert_index] = sort_item
+                item_sorted = True
             else:
-                items[insert_index] = items[search_index]
-                search_index -= 1
+                #move compared item down and check
+                items[insert_index] = items[compare_index]
+                if compare_index == 0:
+                    items[compare_index] = sort_item
+                    item_sorted = True
+                else:
+                    insert_index -= 1
+                    compare_index -= 1
+
         
 
 
@@ -132,9 +141,6 @@ def merge(items1, items2):
     return new_list
 
 
-
-
-
 def split_sort_merge(items):
     """Sort given items by splitting list into two approximately equal halves,
     sorting each with an iterative sorting algorithm, and merging results into
@@ -158,11 +164,7 @@ def split_sort_merge(items):
     selection_sort(list1)
     selection_sort(list2)
     # Merge sorted halves into one list in sorted order
-    return merge(list1, list2)
-
-    
-    
-
+    return merge(list1, list2)  
 
 def merge_sort(items):
     """Sort given items by splitting list into two approximately equal halves,
@@ -174,6 +176,11 @@ def merge_sort(items):
     # TODO: Sort each half by recursively calling merge sort
     # TODO: Merge sorted halves into one list in sorted order
 
+def tree_sort(items):
+    tree = BT(items)
+    sorted_items = tree.items_in_order()
+    return sorted_items
+
 
 def random_ints(count=20, min=1, max=50):
     """Return a list of `count` integers sampled uniformly at random from
@@ -182,7 +189,7 @@ def random_ints(count=20, min=1, max=50):
     return [random.randint(min, max) for _ in range(count)]
 
 
-def test_sorting(sort=selection_sort, num_items=20, max_value=50):
+def test_sorting(sort=insertion_sort, num_items=20, max_value=50):
     """Test sorting algorithms with a small list of random items."""
     # Create a list of items randomly sampled from range [1...max_value]
     items = random_ints(num_items, 1, max_value)
@@ -195,7 +202,6 @@ def test_sorting(sort=selection_sort, num_items=20, max_value=50):
     sort(items)
     print('Sorted items:  {!r}'.format(items))
     print('Sorted order?  {!r}'.format(is_sorted(items)))
-
 
 def main():
     """Read command-line arguments and test sorting algorithms."""
@@ -250,3 +256,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+    listylist = [3, 5, 7, 8, 2, 7, 3]
+    insertion_sort(listylist)
+    print(listylist)
