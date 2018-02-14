@@ -100,9 +100,15 @@ class IntegerSortTest(unittest.TestCase):
         items3 = [5, 7, 3]
         sort(items3)
         assert items3 == [3, 5, 7]
-        # TODO: Write more test cases with assert equal list statements
+        # Write more test cases with assert equal list statements
         # You'll need a lot more than this to test sorting algorithm robustness
-        # ...
+
+        items5 = [0, 1, 2, 3]
+        sort(items5)
+        assert items5 == [0,1,2,3]
+        items6 = [4333, 3433, 3343, 3334]
+        sort(items6)
+        assert items6 == [3334, 3343, 3433, 4333]
 
     def test_sort_on_small_lists_of_integers_with_duplicates(self):
         items1 = [3, 3]
@@ -117,10 +123,15 @@ class IntegerSortTest(unittest.TestCase):
         items4 = [7, 5, 3, 7, 5, 7, 5, 3, 7]
         sort(items4)
         assert items4 == [3, 3, 5, 5, 5, 7, 7, 7, 7]
-        # TODO: Create lists of integers with many duplicate values
-        # TODO: Write more test cases with assert equal list statements
-        # You'll need a lot more than this to test sorting algorithm robustness
-        # ...
+        # Create lists of integers with many duplicate values
+        # Write more test cases with assert equal list statements
+        items5 = [89, 89, 89, 9]
+        sort(items5)
+        assert items5 == [ 9, 89, 89, 89]
+        items6 = [78, 45, 23, 78, 45, 23]
+        sort(items6) 
+        assert items6 == [23, 23, 45, 45, 78, 78]
+        
 
     def test_sort_on_lists_of_random_integers(self):
         # Generate list of 10 random integers from range [1...20]
