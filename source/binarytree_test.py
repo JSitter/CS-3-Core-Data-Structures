@@ -212,7 +212,7 @@ class BinarySearchTreeTest(unittest.TestCase):
 
     def test_height(self):
         tree = BinarySearchTree()
-        assert(tree.root.height) is None
+        assert(tree.root.height is None
         tree.insert("A")
         assert(tree.root.height) is 1
 
