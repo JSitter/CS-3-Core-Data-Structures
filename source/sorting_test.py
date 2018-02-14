@@ -18,18 +18,20 @@ class IsSortedTest(unittest.TestCase):
         assert is_sorted([3, 3]) is True  # Duplicate items are in order
         assert is_sorted([3, 5]) is True
         assert is_sorted([3, 5, 7]) is True
-        # TODO: Write more positive test cases with assert is True statements
-        # You'll need a lot more than this to test sorting algorithm robustness
-        # ...
+        # Write more positive test cases with assert is True statements
+        assert is_sorted([0, 1, 10, 100])
+        assert is_sorted([-2, -1, 0])
+        assert is_sorted([1234, 12345, 123456])
 
     def test_is_sorted_on_unsorted_integers(self):
         # Negative test cases (counterexamples) with lists of unsorted integers
         assert is_sorted([5, 3]) is False
         assert is_sorted([3, 5, 3]) is False
         assert is_sorted([7, 5, 3]) is False
-        # TODO: Write more negative test cases with assert is False statements
-        # You'll need a lot more than this to test sorting algorithm robustness
-        # ...
+        # Write more negative test cases with assert is False statements
+        assert is_sorted([5577, 577, 77 ]) is False
+        assert is_sorted([0, 1, 2, 3, 0]) is False
+        assert is_sorted([22, 222, 2222, 2]) is False
 
     def test_is_sorted_on_sorted_strings(self):
         # Positive test cases (examples) with lists of sorted strings
@@ -48,9 +50,9 @@ class IsSortedTest(unittest.TestCase):
         assert is_sorted(['B', 'A']) is False
         assert is_sorted(['A', 'B', 'A']) is False
         assert is_sorted(['C', 'B', 'A']) is False
-        # TODO: Write more negative test cases with assert is False statements
-        # You'll need a lot more than this to test sorting algorithm robustness
-        # ...
+        # Write more negative test cases with assert is False statements
+        assert is_sorted(['Stringy', "String", "Strin"]) is False
+        assert is_sorted(['Pinapples', "'"]) is False
 
     def test_is_sorted_on_sorted_tuples(self):
         # Positive test cases (examples) with lists of sorted tuples
@@ -68,8 +70,9 @@ class IsSortedTest(unittest.TestCase):
         assert is_sorted([(3, 'A'), (5, 'B')]) is True  # Both items sorted
         assert is_sorted([(3, 'A'), (5, 'A')]) is True  # First item sorted
         assert is_sorted([(3, 'A'), (3, 'B')]) is True  # Second item sorted
-        # TODO: Write more positive test cases with assert is True statements
-        # ...
+        #Write more positive test cases with assert is True statements
+        assert is_sorted([(3, 3), (3, 4), (4, 3)]) is True
+        assert is_sorted([ ( "ABA", 3 ), ("ABB", 3), ("ABB", 3) ]) is True
 
     def test_is_sorted_on_unsorted_tuples(self):
         # Negative test cases (counterexamples) with lists of unsorted tuples
@@ -79,8 +82,9 @@ class IsSortedTest(unittest.TestCase):
         assert is_sorted([('B', 5), ('A', 3)]) is False  # Both items unsorted
         assert is_sorted([('B', 3), ('A', 5)]) is False  # First item unsorted
         assert is_sorted([('A', 5), ('A', 3)]) is False  # Second item unsorted
-        # TODO: Write more negative test cases with assert is False statements
-        # ...
+        # Write more negative test cases with assert is False statements
+        assert is_sorted([ (3, 3), (4, 3),  (3, 3)]) is False
+        assert is_sorted([ ("The", "CAT"), ("Is", 3), ("Carosel", 0) ]) is False
 
 
 class IntegerSortTest(unittest.TestCase):
@@ -184,9 +188,14 @@ class StringSortTest(unittest.TestCase):
         items3 = ['B', 'C', 'A']
         sort(items3)
         assert items3 == ['A', 'B', 'C']
-        # TODO: Write more test cases with assert equal list statements
+        # Write more test cases with assert equal list statements
         # You'll need a lot more than this to test sorting algorithm robustness
-        # ...
+        items4 = ['T', 'B', 'C', 'A']
+        sort(items4)
+        assert items4 == ["A", "B", "C", "T"]
+        items5 = [ "Ruff", "1", "98", "'"]
+        sort(items5)
+        assert items5 == [ "'", "1", "98", "Ruff"]
 
     def test_sort_on_fish_book_title(self):
         items = 'one fish two fish red fish blue fish'.split()
