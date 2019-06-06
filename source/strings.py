@@ -1,5 +1,21 @@
 #!python
 
+def count_substring(string, sub_string):
+    if len(sub_string) == 0:
+        return 0
+    
+    if len(string) < len(sub_string):
+        return 0
+
+    substring_count = 0
+
+    for str_index in range(len(string)-len(sub_string)+1):
+        string_slice = string[str_index:(len(sub_string)+str_index)]
+        if string_slice == sub_string:
+            substring_count += 1
+            
+    return substring_count
+
 def contains(text, pattern):
     """Return a boolean indicating whether pattern occurs in text."""
     #O(p(n-p)) runtime where n is the number of characters in text string
